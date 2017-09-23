@@ -5,9 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
-var fibonacci = require('./routes/fibonacci');
+var index = require('./routes/index');	// index.ejs
+var users = require('./routes/users');	// users.ejs
+var fibonacci = require('./routes/fibonacci');	//fibonacci.ejs
 
 var app = express();
 
@@ -23,9 +23,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/users', users);
-app.use('/fibonacci', fibonacci.index);
+app.use('/', index);		// when open url "localhost:4000" -> call 'index.ejs'
+app.use('/users', users);	// when open url "localhost:4000/users" -> call 'users.ejs'
+app.use('/fibonacci', fibonacci.index);	// when open url "localhost:4000/fibonacci" -> call 'fibonacci.ejs'
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -45,4 +45,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+module.exports = app;	// export - dử dụng để gọi 'app.js' trong file './bin/www'
