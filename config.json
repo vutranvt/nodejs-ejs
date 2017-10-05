@@ -1,0 +1,23 @@
+{
+  "apps" : [
+
+      // First application
+      {
+        "name"      : "api",
+        "script"    : "./bin/www",
+        "node_args" : ["--inspect"]
+       /* env: {
+          COMMON_VARIABLE: 'true'
+        },
+        env_production : {
+          NODE_ENV: 'production'
+        }*/
+      }
+
+     /* // Second application
+      {
+        name      : 'WEB',
+   script    : 'web.js'
+      }   */  
+  ]  
+}

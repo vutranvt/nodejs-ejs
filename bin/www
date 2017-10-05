@@ -6,7 +6,7 @@
 
 
 var app = require('../app');    // file app.js
-var debug = require('debug')('fistproject:server');
+var debug = require('debug')('nodejs:server');
 var http = require('http');
 
 /**
