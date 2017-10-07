@@ -118,18 +118,15 @@ clientInfo collection = {
         startTime: 
         endTime:
     },
-    subscribers: [
+    topicPubSub: [
         {
             topic: "",
-            state: ""
+            type: "publish" / "subscribe"
+            state: "on" / "off"
         }
     ],
-    publishers:[
-        {
-            topic: "",
-            state: ""
-        }
-    ]
+    firmwareVersion: "1.0",
+    macAddress: ""
 }
  */
 
@@ -207,7 +204,7 @@ broker.on('published', function(packet, client) {
     } 
     console.log('Published data: ', obj);
 
-    if (obj.firmwareversion) {
+    if (obj.firmwareVersion) {
         mongoClient.connect('mongodb://127.0.0.1:27017/nthdb', function(err, db) {
             if (err) {
                 // throw err;
@@ -217,7 +214,15 @@ broker.on('published', function(packet, client) {
                 var clientInfo = db.collection('clientInfo');
                 clientInfo.update(
                     { clientId: client.id},
-                    { $set: { firmwareVersion: obj.firmwareversion, macAddress: obj.macaddress}}, 
+                    { $set: {
+                        center: obj.center,
+                        type: obj.type,
+                        location: obj.location, 
+                        firmwareVersion: obj.firmwareVersion, 
+                        macAddress: obj.macAddress, 
+                        updateInfo: obj.updateInfo,
+                        deviceConfig: obj.deviceConfig 
+                    }}, 
                     function (err,res) {
                         if (err) console.log(err);
                         // console.log('publish info update:');
@@ -362,7 +367,7 @@ broker.on('unsubscribed', function(topic, client) {
             // 
             clientInfo.update(
                 { clientId: client.id, topicPubSub: { $elemMatch: { topic: topic, type: "subscribe", state: "on"}}}, 
-                { $set: {"subscribers.$.state": data}}, 
+                { $set: {"topicPubSub.$.state": data}}, 
                 function (err,res) {
                     if (err) console.log(err);
                     console.log('unsubscribed success :', topic);
