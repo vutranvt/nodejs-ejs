@@ -29,9 +29,11 @@ app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.dirname(require.resolve("mosca")) + "/public"))
 
-app.use('/', index);		// when open url "localhost:4000/" -> run file ./routers/index.js (module.export.index)
-app.use('/users', users);	// when open url "localhost:4000/users" -> run file ./routers/users.js (module.export.users)
-app.use('/fibonacci', fibonacci.index);	// when open url "localhost:4000/fibonacci" -> run file ./routers/fibonacci.js (export.index)
+    app.use('/', index);		// when open url "localhost:4000/" -> run file ./routers/index.js (module.export.index)
+
+    app.use('/users', users);	// when open url "localhost:4000/users" -> run file ./routers/users.js (module.export.users)
+
+    app.use('/fibonacci', fibonacci.index);	// when open url "localhost:4000/fibonacci" -> run file ./routers/fibonacci.js (export.index)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -135,7 +137,7 @@ clientInfo collection = {
 broker.on('clientConnected', function(client) {     
     console.log('client connected', client.id);
 
-      mongoClient.connect('mongodb://127.0.0.1:27017/nthdb', function(err, db) {
+        mongoClient.connect('mongodb://127.0.0.1:27017/nthdb', function(err, db) {
         if (err){
             console.log(err.name); 
             console.log(err.message); 

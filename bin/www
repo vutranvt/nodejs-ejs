@@ -8,6 +8,7 @@
 var app = require('../app');    // file app.js
 var debug = require('debug')('nodejs:server');
 var http = require('http');
+var mongoClient = require('mongodb').MongoClient;
 
 /**
  * Get port from environment and store in Express.
@@ -25,8 +26,15 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
+mongoClient.connect('mongodb://127.0.0.1:27017/nthdb', function(err, database) {
+    if (err){
+        console.log(err.name); 
+        console.log(err.message);    //throw err;   
+    }
+    db = database;
+    server.listen(port);
+});
 
-server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 

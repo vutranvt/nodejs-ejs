@@ -25,8 +25,8 @@
   </body>
 </html> -->
 
-<% include top %>
-<script src="./mqtt.js"></script>
+
+<!-- <script src="./mqtt.js"></script>
 <script>
       var client = mqtt.connect('mqtt://113.161.21.15:1884', {
           clientId: 'mqtt_webapp', 
@@ -44,5 +44,21 @@
       });
 
       client.publish("mqtt/demo", "hello world!");
-</script>
+</script> -->
+<% include top %>
+<ul class="clientInfo">
+  <% for(var i=0; i<clientInfo.length; i++) {%>
+    <li class="clientInfos">
+      <span><%= clientInfo[i].clientId %><br /></span>
+      <span><%= clientInfo[i].macAddress %><br /></span>
+      <span><%= clientInfo[i].firmwareVersion %><br /></span>
+      <span><%= clientInfo[i].clientState %><br /></span>
+      <span><%= clientInfo[i].center %><br /></span>
+      <span><%= clientInfo[i].type %><br /></span>
+      <span><%= clientInfo[i].location %><br /></span>
+      <span><%= clientInfo[i].deviceConfig %><br /></span>
+      <span><%= clientInfo[i].updateInfo %><br /></span>
+    </li>
+  <% } %>
+</ul>
 <% include bottom %>
