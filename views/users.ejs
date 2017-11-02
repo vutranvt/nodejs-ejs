@@ -45,20 +45,31 @@
 
       client.publish("mqtt/demo", "hello world!");
 </script> -->
+
 <% include top %>
-<ul class="clientInfo">
+
+<table class="clientInfo">
+  <tr>
+    <th><span style="color:blue;font-weight:bold">ClientID</span</th>
+    <th><span style="color:blue;font-weight:bold">MacAddress</span</th>
+    <th><span style="color:blue;font-weight:bold">Status</span</th>
+    <th><span style="color:blue;font-weight:bold">Version</span</th>
+    <th><span style="color:blue;font-weight:bold">Center</span</th>
+    <th><span style="color:blue;font-weight:bold">Type</span</th>
+    <th><span style="color:blue;font-weight:bold">Location</span</th>
+    <!-- <th><span style="color:blue;font-weight:bold">UpdateInfo</span</th> -->
+  </tr>
   <% for(var i=0; i<clientInfo.length; i++) {%>
-    <li class="clientInfos">
-      <span><%= clientInfo[i].clientId %><br /></span>
-      <span><%= clientInfo[i].macAddress %><br /></span>
-      <span><%= clientInfo[i].firmwareVersion %><br /></span>
-      <span><%= clientInfo[i].clientState %><br /></span>
-      <span><%= clientInfo[i].center %><br /></span>
-      <span><%= clientInfo[i].type %><br /></span>
-      <span><%= clientInfo[i].location %><br /></span>
-      <span><%= clientInfo[i].deviceConfig %><br /></span>
-      <span><%= clientInfo[i].updateInfo %><br /></span>
-    </li>
+    <tr class="clientInfos">
+      <th><%= clientInfo[i].clientId %></th>
+      <th><%= clientInfo[i].macAddress %></th>
+      <th><%= clientInfo[i].clientState %></th>
+      <th><%= clientInfo[i].firmwareVersion %></th>
+      <th><%= clientInfo[i].center %></th>
+      <th><%= clientInfo[i].type %></th>
+      <th><%= clientInfo[i].location %></th>
+      <!-- <th><%= JSON.stringify(clientInfo[i].updateInfo) %></th> -->
+    </tr>
   <% } %>
-</ul>
+</table>
 <% include bottom %>

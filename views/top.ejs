@@ -1,7 +1,25 @@
 <html>
 <head>
     <title><%= title %></title>
+    <script src="/mqtt.js"></script>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+    }
+    </style>
 </head>
 <body>
     <h1><%= title %></h1>
@@ -10,7 +28,11 @@
             <a href='/'>Home</a>
             |
             <!-- <a href='/users'>Users</a> -->
-            <a href='/users'>Mqtt Web Client</a>
+            <a href='/users'>Mqtt Client Info</a>
+            |
+            <a href='/data'>Mqtt Data</a>
+            |
+            <a href='/lwt'>LWT</a>
             |
             <a href='/fibonacci'>Fibonacci calculator</a>
         </p>

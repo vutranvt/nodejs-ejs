@@ -12,7 +12,9 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');	// index = ./routers/index.js
 var users = require('./routes/users');	// users = ./routers/users.js
-var fibonacci = require('./routes/fibonacci');	//fibonacci.ejs
+var fibonacci = require('./routes/fibonacci');  //fibonacci.js
+var data = require('./routes/data');	//data.js
+var lwt = require('./routes/lwt');    //lwt.js
 
 var app = express();
 
@@ -26,12 +28,16 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.dirname(require.resolve("mosca")) + "/public"))
+app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.dirname(require.resolve("mosca")) + "/public"))
 
     app.use('/', index);		// when open url "localhost:4000/" -> run file ./routers/index.js (module.export.index)
 
-    app.use('/users', users);	// when open url "localhost:4000/users" -> run file ./routers/users.js (module.export.users)
+    app.use('/users', users);   // when open url "localhost:4000/users" -> run file ./routers/users.js (module.export.users)
+    
+    app.use('/data', data);	// when open url "localhost:4000/data" -> run file ./routers/data.js (module.export.data)
+
+    app.use('/lwt', lwt); // when open url "localhost:4000/lwt" -> run file ./routers/lwt.js (module.export.lwt)
 
     app.use('/fibonacci', fibonacci.index);	// when open url "localhost:4000/fibonacci" -> run file ./routers/fibonacci.js (export.index)
 
@@ -58,7 +64,12 @@ app.use(function(err, req, res, next) {
 
 
 var settings = {
-  port: 1884
+    port: 1884,
+    http: {
+       port: 3333,
+       bundle: true,
+       static: './'     
+    }
   // backend: ascoltatore
 };
 
@@ -87,9 +98,12 @@ var authorizeSubscribe = function (client, topic, callback) {
 }
 
 // here we start mosca
+// var http = require('http')
+// var httpServer = http.createServer()
 var broker = new mosca.Server(settings);
-// server.attachHttpServer(httpServer);
+// broker.attachHttpServer(app);
 
+// httpServer.listen(9000)
 /*httpServer.get('/index.htm', function (req, res) {
    res.sendFile( __dirname + "/" + "index.htm" );
 })*/

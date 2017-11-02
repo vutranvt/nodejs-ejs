@@ -1,0 +1,18 @@
+<% include top %>
+<table class="clientData">
+    <tr class="clientDatas">
+    <th><span style="color:blue;font-weight:bold">ClientID</span</th>
+    <th><span style="color:blue;font-weight:bold">Topic</span</th>
+    <th><span style="color:blue;font-weight:bold">Value</span</th>
+    <th><span style="color:blue;font-weight:bold">TimeStamp</span</th>
+    </tr>
+    <% for(var i=0; i<clientData.length; i++) {%>
+        <tr class="clientDatas">
+            <th><%= clientData[i].clientId %></th>
+            <th><%= clientData[i].topic %></th>
+            <th><%= JSON.stringify(clientData[i].value) %></th>
+            <th><%= clientData[i].timestamp %></th>
+        </tr>
+    <% } %>
+</table>
+<% include bottom %>
