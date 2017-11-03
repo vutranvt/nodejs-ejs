@@ -231,9 +231,9 @@ broker.on('published', function(packet, client) {
                 clientInfo.update(
                     { clientId: client.id},
                     { $set: {
-                        center: obj.center,
+                        location: obj.location,
                         type: obj.type,
-                        location: obj.location, 
+                        name: obj.name, 
                         firmwareVersion: obj.firmwareVersion, 
                         macAddress: obj.macAddress, 
                         updateInfo: obj.updateInfo,
