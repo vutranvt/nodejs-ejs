@@ -1,0 +1,20 @@
+<% include top %>
+    <div id="output"></div>
+    <script>
+        var option = {
+            username: "esp32",
+            password: "mtt@23377"
+        }
+        var client = mqtt.connect('ws://localhost:3333', option);
+
+        client.subscribe("location/type/name");
+
+        var output = document.getElementById("output");
+        client.on("message", function (topic, payload) {
+            // alert([topic, payload].join(": ")); 
+            output.innerHTML += topic + ": " + payload + "</br>";
+        });
+
+        client.publish("mqtt/demo", "hello world!");
+    </script>
+<% include bottom %>

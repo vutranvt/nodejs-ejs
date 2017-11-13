@@ -1,62 +1,15 @@
-<!-- <html>
-  <head>
-    <script src="/mqtt.js"></script>
-  </head>
-  <body>
-    <script>
-      var client = mqtt.connect({
-          clientId: 'mqtt_webapp', 
-          host: 'localhost', 
-          port: 1884, 
-          keepalive: 60, 
-          username: esp32, 
-          password: mtt@23377
-      });
 
-      client.subscribe("mqtt/demo");
-
-      client.on("message", function(topic, payload) {
-        alert([topic, payload].join(": "));
-        client.end();
-      });
-
-      client.publish("mqtt/demo", "hello world!");
-    </script>
-  </body>
-</html> -->
-
-
-<!-- <script src="./mqtt.js"></script>
-<script>
-      var client = mqtt.connect('mqtt://113.161.21.15:1884', {
-          clientId: 'mqtt_webapp', 
-          // host: '113.161.21.15', 
-          // port: 1884, 
-          username: 'esp32', 
-          password: 'mtt@23377'
-      });
-
-      client.subscribe("mqtt/demo");
-
-      client.on("message", function(topic, payload) {
-        alert([topic, payload].join(": "));
-        client.end();
-      });
-
-      client.publish("mqtt/demo", "hello world!");
-</script> -->
 
 <% include top %>
-
 <table class="clientInfo">
   <tr>
-    <th><span style="color:blue;font-weight:bold">ClientID</span</th>
-    <th><span style="color:blue;font-weight:bold">MacAddress</span</th>
-    <th><span style="color:blue;font-weight:bold">Status</span</th>
-    <th><span style="color:blue;font-weight:bold">Version</span</th>
-    <th><span style="color:blue;font-weight:bold">Center</span</th>
-    <th><span style="color:blue;font-weight:bold">Type</span</th>
-    <th><span style="color:blue;font-weight:bold">Location</span</th>
+    <th><span style="color:#269DD4;font-weight:bold">ClientID</span</th>
+    <th><span style="color:#269DD4;font-weight:bold">MacAddress</span</th>
+    <th><span style="color:#269DD4;font-weight:bold">Status</span</th>
+    <th><span style="color:#269DD4;font-weight:bold">Version</span</th>
+    <th><span style="color:#269DD4;font-weight:bold">Location</span</th>
+    <th><span style="color:#269DD4;font-weight:bold">Type</span</th>
+    <th><span style="color:#269DD4;font-weight:bold">Name</span</th>
     <!-- <th><span style="color:blue;font-weight:bold">UpdateInfo</span</th> -->
   </tr>
   <% for(var i=0; i<clientInfo.length; i++) {%>
@@ -65,9 +18,9 @@
       <th><%= clientInfo[i].macAddress %></th>
       <th><%= clientInfo[i].clientState %></th>
       <th><%= clientInfo[i].firmwareVersion %></th>
-      <th><%= clientInfo[i].center %></th>
-      <th><%= clientInfo[i].type %></th>
       <th><%= clientInfo[i].location %></th>
+      <th><%= clientInfo[i].type %></th>
+      <th><%= clientInfo[i].name %></th>
       <!-- <th><%= JSON.stringify(clientInfo[i].updateInfo) %></th> -->
     </tr>
   <% } %>

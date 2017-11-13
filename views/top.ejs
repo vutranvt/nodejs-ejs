@@ -1,39 +1,68 @@
 <html>
 <head>
     <title><%= title %></title>
-    <script src="/mqtt.js"></script>
+    <script src="/javascripts/browserMqtt.js"></script>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <style>
+        .title {
+            color: #0D9FF3;
+            /* padding: 10px; */
+            text-align: left;
+            font-size: 400%;
+        }
         table {
             font-family: arial, sans-serif;
             border-collapse: collapse;
             width: 100%;
         }
-
+        tr.header {
+            color: #FF7504;
+            font-weight: bold;
+        }
+        /*table data and table header*/
         td, th {
             border: 1px solid #dddddd;
             text-align: left;
             padding: 8px;
+            font-weight: normal;            
         }
 
-        tr:nth-child(even) {
+        /* tr:nth-child(even) {
             background-color: #dddddd;
-    }
+        } */
+        
+        .navbar {
+            background-color: #808285;
+            color: #D11B1B; 
+            /* padding: 5px; */
+            /* width: 800px; */
+            /* height: 60px; */
+        }
+
+        a:link, a:visited {
+            background-color: #808285;
+            color: #FFFFFF;   
+            padding: 14px 25px;
+            text-align: center; 
+            text-decoration: none;
+            display: inline-block;
+            font-size: 130%;
+        }
+
+        a:hover, a:active {
+            background-color: #35DD5A;
+        }
     </style>
 </head>
 <body>
-    <h1><%= title %></h1>
+    <!-- <h1 class='title'><%= title %></h1> -->
     <div class='navbar'>
         <p>
-            <a href='/'>Home</a>
-            |
-            <!-- <a href='/users'>Users</a> -->
-            <a href='/users'>Mqtt Client Info</a>
-            |
-            <a href='/data'>Mqtt Data</a>
-            |
+            <a href='/'>HOME</a>
+            <a href='/users'>THIẾT BỊ</a>
+            <a href='/data'>DỮ LIỆU</a>
             <a href='/lwt'>LWT</a>
-            |
-            <a href='/fibonacci'>Fibonacci calculator</a>
+            <a href='/log'>LOGS</a>
+            <!-- <a href='/fibonacci'>Fibonacci</a> -->
         </p>
     </div>

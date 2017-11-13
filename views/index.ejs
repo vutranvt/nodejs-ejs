@@ -1,15 +1,17 @@
 <% include top %>
-<!-- var client = mqtt.connect({host: 'localhost', port: 3333, protocol: 'ws'}); -->
-<script src="./javascripts/browserMqtt.js"></script>
-<script>
-  var client = mqtt.connect({host: 'ws://localhost', port: 3333, protocol: 'ws'}, {username: 'esp32', password: 'mtt@23377'}) // you add a ws:// url here
-  client.subscribe("mqtt/demo")
- 
-  client.on("message", function (topic, payload) {
-    alert([topic, payload].join(": "))
-    client.end()
-  })
- 
-  client.publish("mqtt/demo", "hello world!")
-</script> 
+  <script>
+    var option = {
+      username: "esp32",
+      password: "mtt@23377"
+    }
+    var client = mqtt.connect('ws://localhost:3333', option);
+
+    client.subscribe("mqtt");
+
+    client.on("message", function(topic, payload) {
+      alert([topic, payload].join(": "));
+    });
+
+    client.publish("mqtt/demo", "hello world!");
+  </script>
 <% include bottom %>

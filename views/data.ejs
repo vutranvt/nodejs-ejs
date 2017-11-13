@@ -1,17 +1,16 @@
 <% include top %>
-<table class="clientData">
-    <tr class="clientDatas">
-    <th><span style="color:blue;font-weight:bold">ClientID</span</th>
-    <th><span style="color:blue;font-weight:bold">Topic</span</th>
-    <th><span style="color:blue;font-weight:bold">Value</span</th>
-    <th><span style="color:blue;font-weight:bold">TimeStamp</span</th>
+<table class="data">
+    <!-- <caption style="font-size: 120%;text-align:left;color:#FF7504; font-weight:bold">Last Mqtt Data</caption> -->
+    <tr class="header">
+        <th><span style="color:#269DD4;font-weight:bold">Topic</span></th>
+        <th><span style="color:#269DD4;font-weight:bold">Value</span></th>
+        <th><span style="color:#269DD4;font-weight:bold">Timestamp</span></th>
     </tr>
-    <% for(var i=0; i<clientData.length; i++) {%>
-        <tr class="clientDatas">
-            <th><%= clientData[i].clientId %></th>
-            <th><%= clientData[i].topic %></th>
-            <th><%= JSON.stringify(clientData[i].value) %></th>
-            <th><%= clientData[i].timestamp %></th>
+    <% for(var i=0; i<bmtData.length; i++) {%>
+        <tr class="child">
+            <th><%= bmtData[i].topic %></th>
+            <th><%= JSON.stringify(bmtData[i].value) %></th>
+            <th><%= bmtData[i].timestamp %></th>
         </tr>
     <% } %>
 </table>
