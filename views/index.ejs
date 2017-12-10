@@ -1,17 +1,9 @@
 <% include top %>
-  <script>
-    var option = {
-      username: "esp32",
-      password: "mtt@23377"
-    }
-    var client = mqtt.connect('ws://localhost:3333', option);
-
-    client.subscribe("mqtt");
-
-    client.on("message", function(topic, payload) {
-      alert([topic, payload].join(": "));
-    });
-
-    client.publish("mqtt/demo", "hello world!");
-  </script>
+    <div id="content"></div>
+    <script>
+      let elm = document.getElementById("content");
+      elm.style.color = "#0D9FF3";
+      let name = "typescript";
+      elm.innerHTML = `<div>name: ${name}</div>`;
+    </script>
 <% include bottom %>

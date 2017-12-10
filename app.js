@@ -70,4 +70,6 @@ Date.prototype.vnDate = function () {
 }
 
 
+
+
 module.exports = app;	// export - dử dụng để gọi 'app.js' trong file './bin/www'

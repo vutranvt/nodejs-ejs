@@ -5,9 +5,9 @@
             username: "esp32",
             password: "mtt@23377"
         }
-        var client = mqtt.connect('ws://localhost:3333', option);
+        var client = mqtt.connect('ws://113.161.21.15:3334', option);
 
-        client.subscribe("location/type/name");
+        client.subscribe("+/+/#");
 
         var output = document.getElementById("output");
         client.on("message", function (topic, payload) {
